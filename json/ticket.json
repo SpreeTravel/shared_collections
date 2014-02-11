@@ -1,0 +1,9 @@
+{
+  "ticket": {
+    "customer": "spree@example.com",
+    "subject": "Can't access my account",
+    "description": "...",
+    "origin": "login"
+  }
+}
+

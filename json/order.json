@@ -1,0 +1,93 @@
+{
+  "order": {
+    "id": "R154085346",
+    "number": "R154085346",
+    "channel": "spree",
+    "email": "spree@example.com",
+    "currency": "USD",
+    "placed_on": "2014-02-03T17:29:15.219Z",
+    "updated_at": "2014-02-03T17:29:15.253Z",
+    "status": "complete",
+    "totals": {
+      "item": 100.0,
+      "adjustment": 5.0,
+      "tax": 0.0,
+      "shipping": 5.0,
+      "payment": 105.0,
+      "order": 105.0
+    },
+    "line_items": [
+      {
+        "name": "Spree T-Shirt",
+        "sku": "SPREE-T-SHIRT",
+        "external_ref": "",
+        "quantity": 1,
+        "price": 100.0,
+        "variant_id": 73,
+        "options": {
+        }
+      }
+    ],
+    "adjustments": [
+      {
+        "name": "Shipping",
+        "value": 5.0
+      }
+    ],
+    "shipping_address": {
+      "firstname": "Joe",
+      "lastname": "Smith",
+      "address1": "1234 Awesome Street",
+      "address2": "",
+      "zipcode": "90210",
+      "city": "Hollywood",
+      "state": "California",
+      "country": "US",
+      "phone": "0000000000"
+    },
+    "billing_address": {
+      "firstname": "Joe",
+      "lastname": "Smith",
+      "address1": "1234 Awesome Street",
+      "address2": "",
+      "zipcode": "90210",
+      "city": "Hollywood",
+      "state": "California",
+      "country": "US",
+      "phone": "0000000000"
+    },
+    "payments": [
+      {
+        "number": 63,
+        "status": "completed",
+        "amount": 105.0,
+        "payment_method": "Credit Card"
+      }
+    ],
+    "shipments": [
+      {
+        "id": "H51851735361",
+        "number": "H51851735361",
+        "cost": 5.0,
+        "status": "ready",
+        "stock_location": null,
+        "shipping_method": "UPS Ground (USD)",
+        "tracking": null,
+        "updated_at": null,
+        "shipped_at": null,
+        "items": [
+          {
+            "name": "Spree T-Shirt",
+            "sku": "SPREE-T-SHIRT",
+            "external_ref": "",
+            "quantity": 1,
+            "price": 100.0,
+            "variant_id": 73,
+            "options": {
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

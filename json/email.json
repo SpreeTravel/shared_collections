@@ -1,0 +1,12 @@
+{
+  "email": {
+    "to": "spree@example.com",
+    "subject": "Order R123456 was shipped!",
+    "template": "order.shipped",
+    "variables": {
+      "customer.name": "John Smith",
+      "order.total": "100.00",
+      "order.tracking": "XYZ123"
+    }
+  }
+}
