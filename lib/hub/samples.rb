@@ -4,7 +4,7 @@ require 'json'
 module Hub
   module Samples
     def self.available
-        %w[order product store]
+        %w[order product]
     end
   end
 end
