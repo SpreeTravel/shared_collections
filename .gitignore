@@ -1,6 +1,6 @@
-.DS_Store
-.DS_Store?
 *.swp
-/coverage/
-/spec/tmp
-**.orig
+*.swo
+coverage/
+log/
+.DS_Store
+.bundle
