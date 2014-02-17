@@ -1,7 +1,7 @@
 {
   "cart": {
     "id": "R154085346",
-    "status": "complete",
+    "status": "confirm",
     "channel": "spree",
     "email": "spree@example.com",
     "currency": "USD",
