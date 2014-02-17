@@ -1,13 +1,11 @@
 {
   "order": {
     "id": "R154085346",
-    "number": "R154085346",
+    "status": "complete",
     "channel": "spree",
     "email": "spree@example.com",
     "currency": "USD",
     "placed_on": "2014-02-03T17:29:15.219Z",
-    "updated_at": "2014-02-03T17:29:15.253Z",
-    "status": "complete",
     "totals": {
       "item": 200.0,
       "adjustment": 10.0,
