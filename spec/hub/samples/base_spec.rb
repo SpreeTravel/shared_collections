@@ -49,7 +49,7 @@ module Hub::Samples
         json = JSON.parse(str)
         json.keys.should == %w{hash}
         json['hash'].keys.should == %w{test}
-        json['hash']['test'].keys.should include('id', 'number', 'total')
+        json['hash']['test'].keys.should include('id', 'line_items', 'totals')
       end
 
       it 'should process an array as an override value' do
