@@ -2,7 +2,7 @@
   "inventory": {
     "id": 12,
     "location": "us_warehouse",
-    "sku": "SPREE-T-SHIRT",
+    "product_id": "SPREE-T-SHIRT",
     "quantity": 93
   }
 }
