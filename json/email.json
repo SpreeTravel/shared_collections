@@ -1,12 +1,13 @@
 {
   "email": {
     "to": "spree@example.com",
+    "from": "someone@spreecommerce.com",
     "subject": "Order R123456 was shipped!",
-    "template": "order.shipped",
+    "template": "order_shipped",
     "variables": {
-      "customer.name": "John Smith",
-      "order.total": "100.00",
-      "order.tracking": "XYZ123"
+      "customer_name": "John Smith",
+      "order_total": "100.00",
+      "order_tracking": "XYZ123"
     }
   }
 }
