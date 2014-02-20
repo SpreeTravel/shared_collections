@@ -1,7 +1,7 @@
 {
   "shipment": {
-    "number": "12836",
-    "order_number": "R154085346",
+    "id": "12836",
+    "order_id": "R154085346",
     "email": "spree@example.com",
     "cost": 5.0,
     "status": "shipped",
