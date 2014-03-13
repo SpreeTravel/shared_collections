@@ -1,6 +1,7 @@
 {
   "sms": {
-    "phone": "(123)-456-7890",
+    "from": "444-444-4444",
+    "phone": "555-555-5555",
     "message": "Order R12345 was shipped!"
   }
 }
