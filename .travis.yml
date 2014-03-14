@@ -1,0 +1,13 @@
+bundler_args: --without development
+script:
+  - "bundle exec rspec"
+
+notifications:
+  email:
+    - brian@spreecommerce.com
+    - pablo@spreecommerce.com
+branches:
+  only:
+    - master
+rvm:
+  - 2.0.0
