@@ -1,5 +1,6 @@
 {
   "customer": {
+    "id": "a123",
     "firstname": "Brian",
     "lastname": "Smith",
     "email": "spree@example.com",
