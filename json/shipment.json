@@ -4,11 +4,10 @@
     "order_id": "R154085346",
     "email": "spree@example.com",
     "cost": 5.0,
-    "status": "shipped",
+    "status": "ready",
     "stock_location": "default",
     "shipping_method": "UPS Ground (USD)",
     "tracking": "12345678",
-    "updated_at": null,
     "shipped_at": "2014-02-03T17:33:55.343Z",
     "shipping_address": {
       "firstname": "Joe",

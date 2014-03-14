@@ -14,7 +14,7 @@ module Hub::Samples
 
       def message
         {
-          'message' => 'order:new',
+          'message' => 'order:created',
           'store_id' => "51f788cf65762d3177000001",
           'payload' => {
             'order' => object['order']
