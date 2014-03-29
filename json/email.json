@@ -1,7 +1,8 @@
 {
   "email": {
     "to": "spree@example.com",
-    "from": "someone@spreecommerce.com",
+    "sender_email": "someone@spreecommerce.com",
+    "sender_name": "Some Person",
     "subject": "Order R123456 was shipped!",
     "template": "order_shipped",
     "variables": {
