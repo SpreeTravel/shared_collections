@@ -8,8 +8,8 @@
     "placed_on": "2014-02-03T17:29:15.219Z",
     "totals": {
       "item": 200.0,
-      "adjustment": 10.0,
-      "tax": 0.0,
+      "adjustment": 20.0,
+      "tax": 10.0,
       "shipping": 10.0,
       "payment": 220.0,
       "order": 220.0
