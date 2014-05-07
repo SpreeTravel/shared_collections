@@ -23,7 +23,7 @@
     },
     "images": [
       {
-        "url": "http://emaple.com/p/1/v/4/image.jpg",
+        "url": "http://dummyimage.com/600x400/000/fff.jpg&text=Spree T-Shirt",
         "position": 1,
         "title": "Spree T-Shirt - Grey Small",
         "type": "thumbnail",
@@ -45,7 +45,7 @@
         },
         "images": [
           {
-            "url": "http://emaple.com/p/1/v/4/image.jpg",
+            "url": "http://dummyimage.com/600x400/000/fff.jpg&text=Spree T-Shirt Grey Small",
             "position": 1,
             "title": "Spree T-Shirt - Grey Small",
             "type": "thumbnail",
