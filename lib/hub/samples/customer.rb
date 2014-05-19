@@ -8,7 +8,7 @@ module Hub::Samples
       def request
         {
           'request_id' => request_id,
-          'shipment' => object['customer']
+          'customer' => object['customer']
         }
       end
 
