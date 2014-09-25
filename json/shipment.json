@@ -9,7 +9,27 @@
     "shipping_method": "UPS Ground (USD)",
     "tracking": "12345678",
     "shipped_at": "2014-02-03T17:33:55.343Z",
+    "channel": "spree",
+    "totals": {
+      "item": 200.0,
+      "adjustment": 10.0,
+      "tax": 10.0,
+      "shipping": 0.0,
+      "payment": 210.0,
+      "order": 210.0
+    },
     "shipping_address": {
+      "firstname": "Joe",
+      "lastname": "Smith",
+      "address1": "1234 Awesome Street",
+      "address2": "",
+      "zipcode": "90210",
+      "city": "Hollywood",
+      "state": "California",
+      "country": "US",
+      "phone": "0000000000"
+    },
+    "billing_address": {
       "firstname": "Joe",
       "lastname": "Smith",
       "address1": "1234 Awesome Street",
