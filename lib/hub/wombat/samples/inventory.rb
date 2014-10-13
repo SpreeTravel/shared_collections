@@ -1,23 +1,23 @@
-module Hub::Samples
-  class Product < Base
+module Hub::Wombat::Samples
+  class Inventory < Base
     class << self
       def object
-        parsed_json('product')
+        parsed_json('inventory')
       end
 
       def request
         {
           'request_id' => request_id,
-          'product' => object['product']
+          'inventory' => object['inventory']
         }
       end
 
       def message
         {
-          'message' => 'product:created',
+          'message' => 'inventory:new',
           'store_id' => "51f788cf65762d3177000001",
           'payload' => {
-            'product' => object['product']
+            'inventory' => object['inventory']
           }
         }
       end

@@ -3,7 +3,7 @@ require 'pry-byebug'
 
 SimpleCov.start do
   add_filter '/spec/'
-  add_filter '/json/'
+  add_filter '/model_schemas/'
 end
 
 Bundler.require(:default, :test)

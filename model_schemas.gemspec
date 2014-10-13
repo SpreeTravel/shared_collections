@@ -3,13 +3,13 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
-  gem.name          = "hub_samples"
+  gem.name          = "model_schemas"
   gem.version       = 1.0
-  gem.authors       = ["Spree Commerce, Inc"]
-  gem.email         = ["hub@spreecommerce.com"]
-  gem.description   = "Sample JSON for the Spree Commerce Hub"
-  gem.summary       = "Sample JSON for the Spree Commerce Hub"
-  gem.homepage      = "http://www.spreecommerce.com"
+  gem.authors       = ["Miguel Sancho"]
+  gem.email         = ["sanchojaf@mail.com"]
+  gem.description   = "Schema Library"
+  gem.summary       = "Schema Library"
+  gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}) { |f| File.basename(f) }

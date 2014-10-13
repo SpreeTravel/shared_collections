@@ -1,4 +1,4 @@
-module Hub::Samples
+module Hub::Wombat::Samples
   class Cart < Base
     class << self
       def object

@@ -1,4 +1,4 @@
-module Hub::Samples
+module Hub::Wombat::Samples
   class Order < Base
     class << self
       def object

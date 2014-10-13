@@ -1,4 +1,4 @@
-module Hub::Samples
+module Hub::Wombat::Samples
   class Base
     class << self
       def build_json(base, overrides={})
@@ -49,7 +49,7 @@ module Hub::Samples
       end
 
       def open_json(file_name)
-        File.open(File.expand_path("../../../../json/#{file_name}.json", __FILE__)).read
+        File.open(File.expand_path("../../../../../model_schemas/wombat/json_samples#{file_name}.json", __FILE__)).read
       rescue => e
         e.message
       end

@@ -1,4 +1,4 @@
-module Hub::Samples
+module Hub::Wombat::Samples
   class Store < Base
     def self.object
       parsed_json('store')
