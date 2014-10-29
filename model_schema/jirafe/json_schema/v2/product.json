@@ -1,0 +1,101 @@
+{
+    "title": "Product Schema",
+    "type": "object",
+    "required": [
+        "id",
+        "is_product",
+        "is_sku",
+        "code",
+        "create_date",
+        "change_date"
+    ],
+    "properties": {
+        "id": {"type": "string"},
+        "is_product": {"type": "boolean"},
+        "is_sku": {"type": "boolean"},
+        "catalog": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {"type": "string"},
+                "version_id": {"type": "string"},
+                "name": {"type": "string"}
+            }
+        },
+        "name": {"type": "string"},
+        "code": {"type": "string"},
+        "ancestors": {
+            "type": "array",
+            "items": {"type": "string"}
+        },
+        "base_product": {
+            "type": "object",
+            "properties": {
+                "id": {"type": "string"},
+                "code": {"type": "string"},
+                "name": {"type": "string"}
+            }
+        },
+        "vendors": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {"type": "string"},
+                    "name": {"type": "string"}
+                }
+            }
+        },
+        "brand": {"type": "string"},
+        "rating": {"type": "number"},
+        "create_date": {"type": "string", "format": "date-time"},
+        "change_date": {"type": "string", "format": "date-time"},
+        "urls": {
+            "type": "object",
+            "properties": {
+                "admin": {"type": "string", "format": "uri"},
+                "store": {"type": "string", "format": "uri"}
+            }
+        },
+        "images"      : {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["url"],
+                "properties": {
+                    "url": {"type": "string", "format": "uri"}
+                }
+            }
+        },
+        "categories"  : {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "name"
+                ],
+                "properties": {
+                    "id": {"type": "string"},
+                    "name": {"type": "string"}
+                }
+            }
+        },
+        "attributes"  : {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "object",
+                "required": ["id", "name", "value"],
+                "properties": {
+                    "id": {"type": "string"},
+                    "name": {"type": "string"},
+                    "value": {"type": "string"}
+                }
+            }
+        }
+    }
+}

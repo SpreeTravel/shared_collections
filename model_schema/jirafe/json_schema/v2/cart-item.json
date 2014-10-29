@@ -1,0 +1,24 @@
+{
+    "title": "Cart Item Schema",
+    "type": "object",
+    "required": [
+        "id",
+        "create_date",
+        "change_date",
+        "cart_item_number",
+        "quantity",
+        "price",
+        "discount_price",
+        "product"
+    ],
+    "properties": {
+        "id": {"type": "string"},
+        "create_date": {"type": "string", "format": "date-time"},
+        "change_date": {"type": "string", "format": "date-time"},
+        "cart_item_number": {"type": "string"},
+        "quantity": {"type": "integer", "minimum": -9007199254740992, "maximum": 9007199254740992},
+        "price": {"type": "number", "minimum": 0, "maximum": 9007199254740992},
+        "discount_price": {"type": "number", "minimum": 0, "maximum": 9007199254740992},
+        "product": {"$ref": "http://event.jirafe.com/v2/schema/event/product.json"}
+    }
+}

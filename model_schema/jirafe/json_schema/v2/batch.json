@@ -1,0 +1,30 @@
+{
+    "title": "Batch Schema",
+    "type": "object",
+    "properties": {
+        "cart": {
+            "type": "array",
+            "items": {"$ref": "http://event.jirafe.com/v2/schema/event/cart.json"}
+        },
+        "category": {
+            "type": "array",
+            "items": {"$ref": "http://event.jirafe.com/v2/schema/event/category.json"}
+        },
+        "customer": {
+            "type": "array",
+            "items": {"$ref": "http://event.jirafe.com/v2/schema/event/customer.json"}
+        },
+        "employee": {
+            "type": "array",
+            "items": {"$ref": "http://event.jirafe.com/v2/schema/event/employee.json"}
+        },
+        "order": {
+            "type": "array",
+            "items": {"$ref": "http://event.jirafe.com/v2/schema/event/order.json"}
+        },
+        "product": {
+            "type": "array",
+            "items": {"$ref": "http://event.jirafe.com/v2/schema/event/product.json"}
+        },
+    }
+}

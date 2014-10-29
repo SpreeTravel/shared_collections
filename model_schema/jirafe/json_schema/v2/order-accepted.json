@@ -1,0 +1,51 @@
+{
+    "title": "Order Accepted Schema",
+    "type": "object",
+    "required": [
+        "order_number",
+        "customer",
+        "order_date",
+        "create_date",
+        "change_date",
+        "status",
+        "subtotal",
+        "total",
+        "total_tax",
+        "total_shipping",
+        "total_payment_cost",
+        "total_discounts",
+        "currency",
+        "items"
+    ],
+    "properties": {
+        "order_number": {"type": "string"},
+        "cart_id": {"type": "string"},
+        "customer": {"$ref": "http://event.jirafe.com/v2/schema/event/customer.json"},
+        "order_date": {"type": "string", "format": "date-time"},
+        "create_date": {"type": "string", "format": "date-time"},
+        "change_date": {"type": "string", "format": "date-time"},
+        "delivery_address": {"$ref": "http://event.jirafe.com/v2/schema/event/address.json"},
+        "payment_address": {"$ref": "http://event.jirafe.com/v2/schema/event/address.json"},
+        "status": {
+            "enum": [
+                "accepted"
+            ]
+        },
+        "subtotal": {"type": "number"},
+        "total": {"type": "number"},
+        "total_tax": {"type": "number"},
+        "total_shipping": {"type": "number"},
+        "total_payment_cost": {"type": "number"},
+        "total_discounts": {"type": "number"},
+        "currency": {"type": "string"},
+        "items": {
+            "type": "array",
+            "minimum": 1,
+            "items": {"$ref": "http://event.jirafe.com/v2/schema/event/order-item.json"}
+        },
+        "previous_items": {
+            "type": "array",
+            "items": {"$ref": "http://event.jirafe.com/v2/schema/event/order-item.json"}
+        }
+    }
+}

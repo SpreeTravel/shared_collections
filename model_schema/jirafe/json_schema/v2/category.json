@@ -1,0 +1,28 @@
+{
+    "title" : "Category Schema",
+    "type" : "object",
+    "required" : [
+        "id",
+        "name",
+        "change_date",
+        "create_date"
+    ],
+    "properties" : {
+        "id" : {"type" : "string"},
+        "name" : {"type" : "string"},
+        "change_date" : {"type" : "string", "format" : "date-time"},
+        "create_date" : {"type" : "string", "format" : "date-time"},
+        "parent_categories" : {
+            "type" : "array",
+            "items" : {
+                "type" : "object",
+                "required" : [
+                    "id"
+                ],
+                "properties" : {
+                    "id" : {"type" : "string"},
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "category": [
+        {
+            "id": "8796094234766",
+            "name": "Category 1",
+            "change_date": "2013-03-28T19:44:11.000Z",
+            "create_date": "2013-03-28T19:38:09.000Z"
+        },
+        {
+            "id": "8796097654766",
+            "name": "Category 2",
+            "change_date": "2013-03-28T19:44:11.000Z",
+            "create_date": "2013-03-28T19:38:09.000Z"
+        }
+    ],
+    "employee": [
+        {
+            "id": "532sdfg",
+            "active_flag": true,
+            "change_date": "2013-03-28T19:38:03.000Z",
+            "create_date": "2013-03-28T19:38:03.000Z",
+            "first_name": "Product",
+            "last_name": "Manager",
+            "email": "product_manager@example.com"
+        }
+    ]
+}

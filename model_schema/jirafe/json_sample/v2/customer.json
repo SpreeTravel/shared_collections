@@ -1,0 +1,10 @@
+{
+    "id": "1234abc",
+    "active_flag": true,
+    "change_date": "2013-06-17T15:15:53.000Z",
+    "create_date": "2013-06-17T15:15:53.000Z",
+    "email": "john.doe@gmail.com",
+    "first_name": "John",
+    "last_name": "Doe",
+    "name": "John Doe"
+}

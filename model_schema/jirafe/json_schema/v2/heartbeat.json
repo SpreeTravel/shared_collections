@@ -1,0 +1,10 @@
+{
+    "title": "Heartbeat Schema",
+    "type": "object",
+    "properties": {
+        "site_id": {"type": "string"},
+        "instance_id": {"type": "string"},
+        "is_enabled": {"type": "bool"},
+        "version": {"type": "string"},
+    }
+}

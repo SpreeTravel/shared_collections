@@ -1,0 +1,36 @@
+{
+    "title": "Order Placed Schema",
+    "type": "object",
+    "required": [
+        "order_number",
+        "customer",
+        "status",
+        "order_date"
+    ],
+    "properties": {
+        "visit": {
+            "type": "object",
+            "required": [
+                "visit_id",
+                "visitor_id",
+                "pageview_id",
+                "last_pageview_id"
+            ],
+            "properties": {
+                "visit_id": {"type": "string"},
+                "visitor_id": {"type": "string"},
+                "pageview_id": {"type": "string"},
+                "last_pageview_id": {"type": "string"}
+            }
+        },
+        "order_date": {"type": "string", "format": "date-time"},
+        "order_number": {"type": "string"},
+        "cart_id": {"type": "string"},
+        "customer": {"$ref": "http://event.jirafe.com/v2/schema/event/customer.json"},
+        "status": {
+            "enum": [
+                "placed"
+            ]
+        }
+    }
+}

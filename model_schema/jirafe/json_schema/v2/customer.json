@@ -1,0 +1,25 @@
+{
+    "title": "Customer Schema",
+    "type": "object",
+    "required": [
+        "id",
+        "create_date",
+        "change_date"
+    ],
+    "properties": {
+        "id": {"type": "string"},
+        "email": {"type": "string"},
+        "name": {"type": "string"},
+        "phone": {"type": "string"},
+        "first_name": {"type": "string"},
+        "last_name": {"type": "string"},
+        "active_flag": {"type": "boolean", "default": true},
+        "company": {"type": "string"},
+        "department": {"type": "string"},
+        "position": {"type": "string"},
+        "marketing_opt_in": {"type": "boolean", "default": false},
+        "create_date": {"type": "string", "format": "date-time"},
+        "change_date": {"type": "string", "format": "date-time"},
+        "cookies": {"type": "object"}
+    }
+}

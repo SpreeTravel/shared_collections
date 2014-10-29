@@ -1,0 +1,82 @@
+{
+    "type": "object",
+    "required" : [
+        "site",
+        "pageview"
+    ],
+    "properties": {
+        "org": {"type": "string"},
+        "site": {"type": "string"},
+        "timestamp": {"type": "string", "format": "isodate"},
+        "page": {
+            "type": "object",
+            "properties": {
+                "page_id": {"type": "string"},
+                "prev_page_id": {"type": "string"}
+            }
+        },
+        "visit": {
+            "type": "object",
+            "required": [
+                "id",
+                "visitor"
+            ],
+            "properties": {
+                "id": {"type": "string"},
+                "visitor": {"type": "string"}
+            }
+        },
+        "pageview": {
+            "type": "object",
+            "required": [
+                "page_type"
+            ],
+            "properties": {
+                "page_type": {
+                    "enum": [
+                        "homepage",
+                        "cart",
+                        "order_confirm",
+                        "order_success",
+                        "checkout",
+                        "product",
+                        "category",
+                        "search",
+                        "other"
+                    ]
+                },
+                "product": {
+                    "type": "object",
+                    "required": [
+                        "product_code"
+                    ],
+                    "properties": {
+                        "name": {"type": "string"},
+                        "sku_code": {"type": "string"},
+                        "product_code": {"type": "string"}
+                    }
+                },
+                "category": {
+                    "type": "object",
+                    "items": {
+                        "id": {"type": "string"},
+                        "name": {"type": "string"}
+                    }
+                },
+                "search": {
+                    "type": "object",
+                    "properties": {
+                        "term": {"type": "string"},
+                        "page": {"type": "integer"},
+                        "total_results": {"type": "integer"}
+                    }
+                },
+                "attribution": {
+                    "type": "array",
+                    "minimum": 1,
+                    "items" : {"type": "string"},
+                }
+            }
+        }
+    }
+}
