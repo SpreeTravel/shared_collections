@@ -1,0 +1,12 @@
+{
+    "tikects": [
+        {
+            "subject": "Purchase Order RF23253 undelivered",
+            "description": "The integration service did not respond in time and the purchase order is sent back in 10 minutes. If the problem persists contact your administrator."
+        },
+        {
+            "subject": "Notification via SMS Twilio could not be delivered",
+            "description": "Twilio api could not verify the key and sercret"
+        }
+    ]
+}

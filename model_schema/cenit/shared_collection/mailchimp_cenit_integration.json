@@ -1,0 +1,203 @@
+{
+  "name": "Mailchimp CENIT Integration",
+  "description": "Mailchimp CENIT Integration",
+  "data": {
+    "name": "Mailchimp CENIT Integration",
+    "flows": [
+      {
+        "name": "Member to Mailchimp Customer List",
+        "active": true,
+        "discard_events": false,
+        "data_type_scope": "Event source",
+        "last_trigger_timestamps": "2015-04-14 21:54:54 UTC",
+        "event": {
+          "$referenced": true,
+          "name": "Comunication | Member on created_at"
+        },
+        "translator": {
+          "$referenced": true,
+          "name": "Mamber to Mailchimp Request"
+        },
+        "webhook": {
+          "$referenced": true,
+          "name": "Mailchimp | Add To Customer List"
+        }
+      }
+    ],
+    "connection_roles": [
+      {
+        "name": "Mailchimp Rol",
+        "webhooks": [
+          {
+            "$referenced": true,
+            "name": "Mailchimp | Add To Customer List"
+          },
+          {
+            "$referenced": true,
+            "name": "Mailchimp | Add Order"
+          }
+        ],
+        "connections": [
+          {
+            "$referenced": true,
+            "name": "Mailchimp Connection"
+          }
+        ]
+      }
+    ],
+    "translators": [
+      {
+        "name": "Mamber to Mailchimp Request",
+        "type": "Export",
+        "style": "ruby",
+        "mime_type": "application/json",
+        "file_extension": "json",
+        "bulk_source": false,
+        "transformation": "source.to_hash(:include_root => true).merge( \"request_id\" => source.id.to_s, parameters: parameters, \"list_id\" => parameters[\"list_id\"]).to_json ",
+        "source_data_type": {
+          "$referenced": true,
+          "name": "Member",
+          "schema": {
+            "$referenced": true,
+            "uri": "member.json",
+            "library": {
+              "$referenced": true,
+              "name": "Comunication"
+            }
+          }
+        }
+      }
+    ],
+    "events": [
+      {
+        "name": "Comunication | Member on created_at",
+        "_type": "Setup::Observer",
+        "triggers": "{\"created_at\":{\"0\":{\"o\":\"_not_null\",\"v\":[\"\",\"\",\"\"]}}}",
+        "data_type": {
+          "$referenced": true,
+          "name": "Member",
+          "schema": {
+            "$referenced": true,
+            "uri": "member.json",
+            "library": {
+              "$referenced": true,
+              "name": "Comunication"
+            }
+          }
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": "Comunication",
+        "schemas": [
+          {
+            "uri": "ticket.json",
+            "schema": "{\r\n  \"title\": \"Ticket\",\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"subject\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"description\": {\r\n      \"type\": \"string\"\r\n    }\r\n  }\r\n}",
+            "library": {
+              "$referenced": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "member.json",
+            "schema": "{\r\n  \"title\": \"Member\",\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"email\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"first_name\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"last_name\": {\r\n      \"type\": \"string\"\r\n    }\r\n  }\r\n}",
+            "library": {
+              "$referenced": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "sms.json",
+            "schema": "{\"title\": \"SMS\", \"type\": \"object\", \"properties\": { \"from\": {\"type\": \"string\"}, \"message\": { \"type\": \"string\" }, \"phone\": { \"type\": \"string\" }}}",
+            "library": {
+              "$referenced": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "email.json",
+            "schema": "{ \"title\": \"Email\",\r\n\"type\": \"object\",\"properties\":\r\n {\"to\": {\"type\": \"string\"},\r\n\"from\": {\"type\": \"string\"},\r\n\"from_name\": {\"type\": \"string\"},\r\n\"subject\": {\"type\": \"string\"},\r\n\"body_text\": {\"type\": \"string\"},\r\n\"body_html\": {\"type\": \"string\"},\r\n\"template\": {\"type\": \"string\"}}}",
+            "library": {
+              "$referenced": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "messaje.json",
+            "schema": "{\r\n  \"title\": \"Message\",\r\n  \"type\": \"object\",\r\n   \"properties\": {\"text\": {\r\n      \"type\": \"string\"\r\n  }\r\n}\r\n}",
+            "library": {
+              "$referenced": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "tweet.json",
+            "schema": "{\r\n  \"title\": \"Tweet\",\r\n  \"type\": \"object\",\r\n   \"properties\": {\"body\": {\r\n      \"type\": \"string\"\r\n  }\r\n}\r\n}",
+            "library": {
+              "$referenced": true,
+              "name": "Comunication"
+            }
+          }
+        ]
+      }
+    ],
+    "webhooks": [
+      {
+        "name": "Mailchimp | Add To Customer List",
+        "path": "add_to_list",
+        "purpose": "send",
+        "method": "post",
+        "template_parameters": [
+          {
+            "key": "list_id",
+            "value": "b6da59a3ab"
+          }
+        ],
+        "connection_roles": [
+          {
+            "$referenced": true,
+            "name": "Mailchimp Rol"
+          }
+        ]
+      },
+      {
+        "name": "Mailchimp | Add Order",
+        "path": "add_order",
+        "purpose": "send",
+        "method": "post",
+        "connection_roles": [
+          {
+            "$referenced": true,
+            "name": "Mailchimp Rol"
+          }
+        ]
+      }
+    ],
+    "connections": [
+      {
+        "number": "C043365381",
+        "name": "Mailchimp Connection",
+        "url": "http://mailchimp.cenithub.com",
+        "token": "pF-VDyhVp9oUGL6BsaVV",
+        "connection_roles": [
+          {
+            "$referenced": true,
+            "name": "Mailchimp Rol"
+          }
+        ],
+        "template_parameters": [
+          {
+            "key": "mailchimp_api_key"
+          }
+        ]
+      }
+    ]
+  },
+  "pull_parameters": [
+    {
+      "label": "Mailchimp API Key",
+      "parameter": "On connection 'Mailchimp Connection' template parameter 'mailchimp_api_key'"
+    }
+  ]
+}

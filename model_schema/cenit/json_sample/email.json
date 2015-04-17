@@ -1,0 +1,11 @@
+{
+    "emails": {
+        "to": "cenithub.to@example.com",
+        "from": "cenithub.from@example.com",
+        "from_name": "CENIT Admin",
+        "subject": "New order R154085347 received",
+        "body_text": "New order R154085347 received",
+        "body_html": "<h2>New order R154085347 received</h2>",
+        "template": "order_confirmation"
+    }
+}

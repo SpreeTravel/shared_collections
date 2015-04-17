@@ -1,0 +1,68 @@
+{
+    "shipments": [
+        {
+            "id": "21214",
+            "order_id": "R154085349",
+            "email": "cenithub@example.com",
+            "cost": 5.0,
+            "status": "ready",
+            "stock_location": "default",
+            "shipping_method": "UPS Ground (USD)",
+            "tracking": "12345678",
+            "shipped_at": "2014-02-03",
+            "updated_at": "2015-04-15",
+            "channel": "spree",
+            "items": [
+                {
+                    "name": "OpenERP T-Shirt",
+                    "quantity": 1,
+                    "price": 30.0,
+                    "product_id": "OpenERP-T-SHIRT"
+                }
+            ],
+            "shipping_address": {
+                "firstname": "Joe",
+                "lastname": "Smith",
+                "address1": "1234 Awesome Street",
+                "address2": "",
+                "city": "Hollywood",
+                "state": "California",
+                "country": "US",
+                "phone": "0000000000",
+                "zipcode": "90210"
+            }
+        },
+        {
+            "id": "128367",
+            "order_id": "R1540853467",
+            "email": "cenithub@example.com",
+            "cost": 5.0,
+            "status": "ready",
+            "stock_location": "default",
+            "shipping_method": "UPS Ground (USD)",
+            "tracking": "12345678",
+            "shipped_at": "2014-02-03",
+            "updated_at": "2015-04-15",
+            "channel": "spree",
+            "items": [
+                {
+                    "name": "OpenERP D-Shirt",
+                    "quantity": 1,
+                    "price": 30.0,
+                    "product_id": "OpenERP-D-SHIRT"
+                }
+            ],
+            "shipping_address": {
+                "firstname": "Joe",
+                "lastname": "Smith",
+                "address1": "1234 Awesome Street",
+                "address2": "",
+                "city": "Hollywood",
+                "state": "California",
+                "country": "US",
+                "phone": "+00000000000",
+                "zipcode": "90210"
+            }
+        }
+    ]
+}
