@@ -1,0 +1,59 @@
+{
+  "name": "Basic",
+  "description": "Basic translators from JSON, XML and EDI",
+  "data": {
+    "name": "Basic",
+    "translators": [
+      {
+        "name": "JSON Importer",
+        "type": "Import",
+        "discard_events": false,
+        "style": "ruby",
+        "bulk_source": false,
+        "transformation": "if (parsed_data = JSON.parse(data)).is_a?(Array) \r\n       parsed_data.each { |item|  targets <<   target_data_type.new_from_json(item) }\r\nelse   \r\n   targets << target_data_type.new_from_json(parsed_data)\r\nend"
+      },
+      {
+        "name": "JSON Exporter",
+        "type": "Export",
+        "style": "ruby",
+        "mime_type": "application/json",
+        "file_extension": "json",
+        "bulk_source": true,
+        "transformation": "if (jsons = sources.collect { |source| source.to_json(pretty: true) } ).length == 1\r\n  jsons[0]\r\nelse\r\n  \"[#{jsons.join(',')}]\"\r\nend"
+      },
+      {
+        "name": "XML Importer",
+        "type": "Import",
+        "discard_events": false,
+        "style": "ruby",
+        "bulk_source": false,
+        "transformation": "if (parsed_data = Nokogiri.parse(data)).is_a?(Array) \r\n       parsed_data.each { |item|  targets <<   target_data_type.new_from_xml(item) }\r\nelse   \r\n   targets << target_data_type.new_from_xml(parsed_data)\r\nend"
+      },
+      {
+        "name": "XML Exporter",
+        "type": "Export",
+        "style": "ruby",
+        "mime_type": "application/xml",
+        "file_extension": "xml",
+        "bulk_source": false,
+        "transformation": "if (xmls = sources.collect { |source| source.to_xml } ).length == 1\r\n  xmls[0]\r\nelse\r\n  \"[#{xmls.join(',')}]\"\r\nend"
+      },
+      {
+        "name": "EDI Importer",
+        "type": "Import",
+        "discard_events": false,
+        "style": "ruby",
+        "bulk_source": false,
+        "transformation": "if (parsed_data = Edi::Parse.parse_edi(target_data_type, data)).is_a?(Array) \r\n       parsed_data.each { |item|  targets <<   target_data_type.new_from_edi(item) }\r\nelse   \r\n   targets << target_data_type.new_from_edi(parsed_data)\r\nend"
+      },
+      {
+        "name": "EDI Exporter",
+        "type": "Export",
+        "style": "ruby",
+        "mime_type": "application/EDI-X12",
+        "bulk_source": false,
+        "transformation": "if (edis = sources.collect { |source| source.to_edi } ).length == 1\r\n  edis[0]\r\nelse\r\n  \"[#{edis.join(',')}]\"\r\nend"
+      }
+    ]
+  }
+}

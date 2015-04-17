@@ -1,88 +1,84 @@
 {
-  "name": "ShipStation CENIT Integration",
-  "description": "ShipStation CENIT Integration",
+  "name": "Mandrill API Integration",
+  "description": "Mandrill API Integration",
   "data": {
-    "name": "ShipStation CENIT Integration",
+    "name": "Mandrill API Integration",
     "flows": [
       {
-        "name": "Shipstation -> Add Shipment",
+        "name": "New Order -> Send Mandrill API Messaje",
         "active": true,
         "discard_events": false,
         "data_type_scope": "Event source",
-        "last_trigger_timestamps": "2015-04-15 14:52:00 UTC",
+        "last_trigger_timestamps": "2015-04-16 14:13:52 UTC",
         "event": {
           "$referenced": true,
-          "name": "Ecommerce | Shipment on created_at"
+          "name": "Ecommerce | Order on updated_at"
         },
         "translator": {
           "$referenced": true,
-          "name": "Make Send Request"
-        },
-        "custom_data_type": {
-          "$referenced": true,
-          "name": "Shipment",
-          "schema": {
-            "$referenced": true,
-            "uri": "shipment.json",
-            "library": {
-              "$referenced": true,
-              "name": "Ecommerce"
-            }
-          }
+          "name": "Message to Mandrill API"
         },
         "webhook": {
           "$referenced": true,
-          "name": "Ship Station | Add Shipment"
+          "name": "Mandrill API | Send Email"
         }
       }
     ],
     "connection_roles": [
       {
-        "name": "Ship Station Rol",
+        "name": "Mandrill API Rol",
         "webhooks": [
           {
             "$referenced": true,
-            "name": "Ship Station | Add Shipment"
+            "name": "Mandrill API | Send Email"
           },
           {
             "$referenced": true,
-            "name": "Ship Station | Update Shipment"
-          },
-          {
-            "$referenced": true,
-            "name": "Ship Station | Get Shipments"
+            "name": "Mandrill API | Send Template Email"
           }
         ],
         "connections": [
           {
             "$referenced": true,
-            "name": "ShipStation Conection"
+            "name": "Mandrill API Connection"
           }
         ]
       }
     ],
     "translators": [
       {
-        "name": "Make Send Request",
+        "name": "Message to Mandrill API",
         "type": "Export",
-        "style": "ruby",
+        "style": "liquid",
         "mime_type": "application/json",
         "file_extension": "json",
         "bulk_source": false,
-        "transformation": "source.to_hash(:include_root => true).merge( \"request_id\" => source.id.to_s, parameters: parameters).to_json"
+        "transformation": "{\r\n    \"key\": \"{{parameters.api_key}}\",\r\n    \"message\": {\r\n        \"html\": \"<p>Example HTML content</p>\",\r\n        \"text\": \"Example text content\",\r\n        \"subject\": \"Order {{id}}\",\r\n        \"from_email\": \"{{parameters.from_email}}\",\r\n        \"from_name\": \"{{parameters.from_name\"]}}\",\r\n        \"to\": [\r\n            {\r\n                \"email\": \"{{email}}\",\r\n                \"name\": \"{{shipping_address.firstname}} {{shipping_address.lastname}}\",\r\n                \"type\": \"to\"\r\n            }\r\n        ],\r\n        \"headers\": {\r\n            \"Reply-To\": \"{{parameters.from_email}}\"\r\n        },\r\n        \"important\": false,\r\n        \"merge\": false,\r\n        \"merge_language\": \"mailchimp\",\r\n        \"global_merge_vars\": [\r\n            {\r\n                \"name\": \"merge1\",\r\n                \"content\": \"merge1 content\"\r\n            }\r\n        ],\r\n        \"merge_vars\": [\r\n            {\r\n                \"vars\": [\r\n                    {\r\n                        \"name\": \"merge2\",\r\n                        \"content\": \"merge2 content\"\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}",
+        "source_data_type": {
+          "$referenced": true,
+          "name": "Order",
+          "schema": {
+            "$referenced": true,
+            "uri": "order.json",
+            "library": {
+              "$referenced": true,
+              "name": "Ecommerce"
+            }
+          }
+        }
       }
     ],
     "events": [
       {
-        "name": "Ecommerce | Shipment on created_at",
+        "name": "Ecommerce | Order on updated_at",
         "_type": "Setup::Observer",
-        "triggers": "{\"created_at\":{\"0\":{\"o\":\"_not_null\",\"v\":[\"\",\"\",\"\"]}}}",
+        "triggers": "{\"updated_at\":{\"0\":{\"o\":\"_change\",\"v\":[\"\",\"\",\"\"]}}}",
         "data_type": {
           "$referenced": true,
-          "name": "Shipment",
+          "name": "Order",
           "schema": {
             "$referenced": true,
-            "uri": "shipment.json",
+            "uri": "order.json",
             "library": {
               "$referenced": true,
               "name": "Ecommerce"
@@ -212,64 +208,65 @@
     ],
     "webhooks": [
       {
-        "name": "Ship Station | Add Shipment",
-        "path": "add_shipment",
+        "name": "Mandrill API | Send Email",
+        "path": "messages/send.json",
         "purpose": "send",
         "method": "post",
+        "template_parameters": [
+          {
+            "key": "from_email",
+            "value": "sanchojaf@gmail.com"
+          },
+          {
+            "key": "from_name",
+            "value": "CENITHub Admin"
+          }
+        ],
         "connection_roles": [
           {
             "$referenced": true,
-            "name": "Ship Station Rol"
+            "name": "Mandrill API Rol"
           }
         ]
       },
       {
-        "name": "Ship Station | Update Shipment",
-        "path": "update_shipment",
+        "name": "Mandrill API | Send Template Email",
+        "path": "messages/send-template.json",
         "purpose": "send",
         "method": "post",
-        "connection_roles": [
+        "template_parameters": [
           {
-            "$referenced": true,
-            "name": "Ship Station Rol"
+            "key": "from_email",
+            "value": "cenithub@gmail.com"
+          },
+          {
+            "key": "from_name",
+            "value": "CENITHub Admin"
           }
-        ]
-      },
-      {
-        "name": "Ship Station | Get Shipments",
-        "path": "get_shipments",
-        "purpose": "receive",
-        "method": "post",
+        ],
         "connection_roles": [
           {
             "$referenced": true,
-            "name": "Ship Station Rol"
+            "name": "Mandrill API Rol"
           }
         ]
       }
     ],
     "connections": [
       {
-        "number": "C546898663",
-        "name": "ShipStation Conection",
-        "url": "http://shipstation.cenithub.com",
-        "token": "6fGmpi_9osucHMS7gnkW",
+        "number": "C645395937",
+        "name": "Mandrill API Connection",
+        "url": "https://mandrillapp.com/api/1.0/",
+        "token": "YVCzL7Vzs3EbnRAG_Sae",
         "connection_roles": [
           {
             "$referenced": true,
-            "name": "Ship Station Rol"
+            "name": "Mandrill API Rol"
           }
         ],
         "template_parameters": [
           {
-            "key": "key"
-          },
-          {
-            "key": "secret"
-          },
-          {
-            "key": "shipstation_partner_ids",
-            "value": "34343"
+            "key": "api_key"
           }
         ]
       }
@@ -277,12 +274,8 @@
   },
   "pull_parameters": [
     {
-      "label": "ShipStation API Key",
-      "parameter": "On connection 'ShipStation Conection' template parameter 'key'"
-    },
-    {
-      "label": "ShipStation Secret",
-      "parameter": "On connection 'ShipStation Conection' template parameter 'secret'"
+      "label": "Mandril API Key",
+      "parameter": "On connection 'Mandrill API Connection' template parameter 'api_key'"
     }
   ]
 }
