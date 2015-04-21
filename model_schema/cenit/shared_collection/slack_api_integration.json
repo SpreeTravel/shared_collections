@@ -45,19 +45,7 @@
     ],
     "connection_roles": [
       {
-        "name": "Slack Rol",
-        "webhooks": [
-          {
-            "$referenced": true,
-            "name": "Slack | Message Channel: General"
-          }
-        ],
-        "connections": [
-          {
-            "$referenced": true,
-            "name": "Slack Connection"
-          }
-        ]
+        "name": "Slack Rol"
       }
     ],
     "translators": [

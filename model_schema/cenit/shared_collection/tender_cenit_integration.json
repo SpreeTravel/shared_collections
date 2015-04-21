@@ -38,19 +38,7 @@
     ],
     "connection_roles": [
       {
-        "name": "Tender Rol",
-        "webhooks": [
-          {
-            "$referenced": true,
-            "name": "Tender | Create Ticket"
-          }
-        ],
-        "connections": [
-          {
-            "$referenced": true,
-            "name": "Tender Connection"
-          }
-        ]
+        "name": "Tender Rol"
       }
     ],
     "translators": [

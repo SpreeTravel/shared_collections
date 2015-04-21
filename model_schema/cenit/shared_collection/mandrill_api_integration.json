@@ -26,23 +26,7 @@
     ],
     "connection_roles": [
       {
-        "name": "Mandrill API Rol",
-        "webhooks": [
-          {
-            "$referenced": true,
-            "name": "Mandrill API | Send Email"
-          },
-          {
-            "$referenced": true,
-            "name": "Mandrill API | Send Template Email"
-          }
-        ],
-        "connections": [
-          {
-            "$referenced": true,
-            "name": "Mandrill API Connection"
-          }
-        ]
+        "name": "Mandrill API Rol"
       }
     ],
     "translators": [

@@ -38,27 +38,7 @@
     ],
     "connection_roles": [
       {
-        "name": "Ship Station Rol",
-        "webhooks": [
-          {
-            "$referenced": true,
-            "name": "Ship Station | Add Shipment"
-          },
-          {
-            "$referenced": true,
-            "name": "Ship Station | Update Shipment"
-          },
-          {
-            "$referenced": true,
-            "name": "Ship Station | Get Shipments"
-          }
-        ],
-        "connections": [
-          {
-            "$referenced": true,
-            "name": "ShipStation Conection"
-          }
-        ]
+        "name": "Ship Station Rol"
       }
     ],
     "translators": [

@@ -38,23 +38,7 @@
     ],
     "connection_roles": [
       {
-        "name": "ShipWire Rol",
-        "webhooks": [
-          {
-            "$referenced": true,
-            "name": "ShipWire | Add Shipment"
-          },
-          {
-            "$referenced": true,
-            "name": "ShipWire | Get Shipments"
-          }
-        ],
-        "connections": [
-          {
-            "$referenced": true,
-            "name": "ShipWire Connection"
-          }
-        ]
+        "name": "ShipWire Rol"
       }
     ],
     "translators": [

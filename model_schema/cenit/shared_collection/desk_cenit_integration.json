@@ -38,19 +38,7 @@
     ],
     "connection_roles": [
       {
-        "name": "Desk Rol",
-        "webhooks": [
-          {
-            "$referenced": true,
-            "name": "Desk | Create Ticket"
-          }
-        ],
-        "connections": [
-          {
-            "$referenced": true,
-            "name": "Desk Connection"
-          }
-        ]
+        "name": "Desk Rol"
       }
     ],
     "translators": [

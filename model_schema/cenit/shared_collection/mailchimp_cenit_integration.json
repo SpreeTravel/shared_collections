@@ -26,23 +26,7 @@
     ],
     "connection_roles": [
       {
-        "name": "Mailchimp Rol",
-        "webhooks": [
-          {
-            "$referenced": true,
-            "name": "Mailchimp | Add To Customer List"
-          },
-          {
-            "$referenced": true,
-            "name": "Mailchimp | Add Order"
-          }
-        ],
-        "connections": [
-          {
-            "$referenced": true,
-            "name": "Mailchimp Connection"
-          }
-        ]
+        "name": "Mailchimp Rol"
       }
     ],
     "translators": [

@@ -41,19 +41,7 @@
     ],
     "connection_roles": [
       {
-        "name": "Twilio API Rol",
-        "webhooks": [
-          {
-            "$referenced": true,
-            "name": "Twilio API | Send SMS"
-          }
-        ],
-        "connections": [
-          {
-            "$referenced": true,
-            "name": "Twilio API Conection"
-          }
-        ]
+        "name": "Twilio API Rol"
       }
     ],
     "translators": [
