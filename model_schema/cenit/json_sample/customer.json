@@ -1,0 +1,82 @@
+{"customers": [{
+  "id": "C1",
+  "firstname": "Brian",
+  "lastname": "Smith",
+  "email": "spree@example.com",
+  "billing_address": {
+    "firstname": "Brian",
+    "lastname": "Smith",
+    "address1": "1234 Awesome Street",
+    "address2": "",
+    "city": "Hollywood",
+    "state": "California",
+    "country": "US",
+    "phone": "0000000000",
+    "zipcode": "90210"
+  },
+  "shipping_address": {
+    "firstname": "Brian",
+    "lastname": "Smith",
+    "address1": "1234 Awesome Street",
+    "address2": "",
+    "city": "Hollywood",
+    "state": "California",
+    "country": "US",
+    "phone": "0000000000",
+    "zipcode": "90210"
+  }
+},{
+  "id": "C2",
+  "firstname": "Brian",
+  "lastname": "Smith",
+  "email": "spree@example.com",
+  "billing_address": {
+    "firstname": "Brian",
+    "lastname": "Smith",
+    "address1": "1234 Awesome Street",
+    "address2": "",
+    "city": "Hollywood",
+    "state": "California",
+    "country": "US",
+    "phone": "0000000000",
+    "zipcode": "90210"
+  },
+  "shipping_address": {
+    "firstname": "Brian",
+    "lastname": "Smith",
+    "address1": "1234 Awesome Street",
+    "address2": "",
+    "city": "Hollywood",
+    "state": "California",
+    "country": "US",
+    "phone": "0000000000",
+    "zipcode": "90210"
+  }
+},{
+  "id": "C3",
+  "firstname": "Brian",
+  "lastname": "Smith",
+  "email": "spree@example.com",
+  "billing_address": {
+    "firstname": "Brian",
+    "lastname": "Smith",
+    "address1": "1234 Awesome Street",
+    "address2": "",
+    "city": "Hollywood",
+    "state": "California",
+    "country": "US",
+    "phone": "0000000000",
+    "zipcode": "90210"
+  },
+  "shipping_address": {
+    "firstname": "Brian",
+    "lastname": "Smith",
+    "address1": "1234 Awesome Street",
+    "address2": "",
+    "city": "Hollywood",
+    "state": "California",
+    "country": "US",
+    "phone": "0000000000",
+    "zipcode": "90210"
+  }
+}]}

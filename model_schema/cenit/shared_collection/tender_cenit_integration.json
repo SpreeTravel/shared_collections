@@ -9,41 +9,53 @@
         "active": true,
         "discard_events": false,
         "data_type_scope": "Event source",
-        "last_trigger_timestamps": "2015-04-07 19:07:45 UTC",
+        "last_trigger_timestamps": "2015-04-23 19:01:33 UTC",
         "event": {
-          "$referenced": true,
+          "_reference": true,
           "name": "Comunication | Ticket on created_at"
         },
         "translator": {
-          "$referenced": true,
-          "name": "Make Send Request"
+          "_reference": true,
+          "name": "Request with CENIT Integration"
         },
         "custom_data_type": {
-          "$referenced": true,
+          "_reference": true,
           "name": "Ticket",
           "schema": {
-            "$referenced": true,
+            "_reference": true,
             "uri": "ticket.json",
             "library": {
-              "$referenced": true,
+              "_reference": true,
               "name": "Comunication"
             }
           }
         },
         "webhook": {
-          "$referenced": true,
+          "_reference": true,
           "name": "Tender | Create Ticket"
         }
       }
     ],
     "connection_roles": [
       {
-        "name": "Tender Rol"
+        "name": "Tender Rol",
+        "webhooks": [
+          {
+            "_reference": true,
+            "name": "Tender | Create Ticket"
+          }
+        ],
+        "connections": [
+          {
+            "_reference": true,
+            "name": "Tender Connection"
+          }
+        ]
       }
     ],
     "translators": [
       {
-        "name": "Make Send Request",
+        "name": "Request with CENIT Integration",
         "type": "Export",
         "style": "ruby",
         "mime_type": "application/json",
@@ -58,13 +70,13 @@
         "_type": "Setup::Observer",
         "triggers": "{\"created_at\":{\"0\":{\"o\":\"_not_null\",\"v\":[\"\",\"\",\"\"]}}}",
         "data_type": {
-          "$referenced": true,
+          "_reference": true,
           "name": "Ticket",
           "schema": {
-            "$referenced": true,
+            "_reference": true,
             "uri": "ticket.json",
             "library": {
-              "$referenced": true,
+              "_reference": true,
               "name": "Comunication"
             }
           }
@@ -79,7 +91,7 @@
             "uri": "ticket.json",
             "schema": "{\r\n  \"title\": \"Ticket\",\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"subject\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"description\": {\r\n      \"type\": \"string\"\r\n    }\r\n  }\r\n}",
             "library": {
-              "$referenced": true,
+              "_reference": true,
               "name": "Comunication"
             }
           },
@@ -87,15 +99,15 @@
             "uri": "member.json",
             "schema": "{\r\n  \"title\": \"Member\",\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"email\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"first_name\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"last_name\": {\r\n      \"type\": \"string\"\r\n    }\r\n  }\r\n}",
             "library": {
-              "$referenced": true,
+              "_reference": true,
               "name": "Comunication"
             }
           },
           {
             "uri": "sms.json",
-            "schema": "{\"title\": \"SMS\", \"type\": \"object\", \"properties\": { \"from\": {\"type\": \"string\"}, \"message\": { \"type\": \"string\" }, \"phone\": { \"type\": \"string\" }}}",
+            "schema": "{\"title\": \"SMS\", \"type\": \"object\", \"properties\": { \"id\": {\"type\": \"string\"}, \"from\": {\"type\": \"string\"}, \"message\": { \"type\": \"string\" }, \"phone\": { \"type\": \"string\" }}}",
             "library": {
-              "$referenced": true,
+              "_reference": true,
               "name": "Comunication"
             }
           },
@@ -103,15 +115,7 @@
             "uri": "email.json",
             "schema": "{ \"title\": \"Email\",\r\n\"type\": \"object\",\"properties\":\r\n {\"to\": {\"type\": \"string\"},\r\n\"from\": {\"type\": \"string\"},\r\n\"from_name\": {\"type\": \"string\"},\r\n\"subject\": {\"type\": \"string\"},\r\n\"body_text\": {\"type\": \"string\"},\r\n\"body_html\": {\"type\": \"string\"},\r\n\"template\": {\"type\": \"string\"}}}",
             "library": {
-              "$referenced": true,
-              "name": "Comunication"
-            }
-          },
-          {
-            "uri": "messaje.json",
-            "schema": "{\r\n  \"title\": \"Message\",\r\n  \"type\": \"object\",\r\n   \"properties\": {\"text\": {\r\n      \"type\": \"string\"\r\n  }\r\n}\r\n}",
-            "library": {
-              "$referenced": true,
+              "_reference": true,
               "name": "Comunication"
             }
           },
@@ -119,7 +123,23 @@
             "uri": "tweet.json",
             "schema": "{\r\n  \"title\": \"Tweet\",\r\n  \"type\": \"object\",\r\n   \"properties\": {\"body\": {\r\n      \"type\": \"string\"\r\n  }\r\n}\r\n}",
             "library": {
-              "$referenced": true,
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "tweet_token.json",
+            "schema": "{\r\n  \"title\":\"Tweet Token\",\r\n  \"type\":\"object\",\r\n  \"properties\":{\r\n    \"tweet\":{\"$ref\":\"tweet.json\", \"referenced\": true},\r\n    \"token\":{\"type\":\"string\"}\r\n  }\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "messaje.json",
+            "schema": "{\r\n  \"title\": \"Message\",\r\n  \"type\": \"object\",\r\n   \"properties\": {\"text\": {\r\n      \"type\": \"string\"\r\n  }\r\n}\r\n}",
+            "library": {
+              "_reference": true,
               "name": "Comunication"
             }
           }
@@ -131,13 +151,7 @@
         "name": "Tender | Create Ticket",
         "path": "create_ticket",
         "purpose": "send",
-        "method": "post",
-        "connection_roles": [
-          {
-            "$referenced": true,
-            "name": "Tender Rol"
-          }
-        ]
+        "method": "post"
       }
     ],
     "connections": [
@@ -146,12 +160,6 @@
         "name": "Tender Connection",
         "url": "http://tender.cenithub.com",
         "token": "Fqj89f94wqwXs-Wnix6A",
-        "connection_roles": [
-          {
-            "$referenced": true,
-            "name": "Tender Rol"
-          }
-        ],
         "template_parameters": [
           {
             "key": "tender_api_key"
@@ -162,7 +170,7 @@
           },
           {
             "key": "tender_author_email",
-            "value": "cenit@example.com"
+            "value": "cenit@gmail.com"
           },
           {
             "key": "tender_domain"

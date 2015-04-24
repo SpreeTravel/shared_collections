@@ -1,0 +1,16 @@
+{
+    "inventories": [
+    {
+        "id": "1",
+        "location": "us_warehouse",
+        "quantity": 93,
+        "product_id": "SPREE-T-SHIRT"
+    },
+    {
+        "id": "2",
+        "location": "us_warehouse",
+        "quantity": 93,
+        "product_id": "SPREE-T-SHIRT"
+    }
+]
+}
