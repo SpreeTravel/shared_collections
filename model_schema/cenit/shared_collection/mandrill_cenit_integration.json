@@ -1,10 +1,365 @@
 {
   "name": "Mandrill CENIT Integration",
   "description": "Mandrill CENIT Integration",
-  "data": "{\"name\":\"Mandrill CENIT Integration\",\"flows\":[{\"name\":\"Send Email with Mandrill\",\"active\":true,\"data_type_scope\":\"Event source\",\"last_trigger_timestamps\":\"2015-04-07T19:52:11.446+00:00\",\"event\":{\"$referenced\":true,\"name\":\"Comunication | Email on created_at\"},\"translator\":{\"$referenced\":true,\"name\":\"Make Send Request\"},\"custom_data_type\":{\"$referenced\":true,\"name\":\"Email\",\"schema\":{\"$referenced\":true,\"uri\":\"email.json\",\"library\":{\"$referenced\":true,\"name\":\"Comunication\"}}},\"webhook\":{\"$referenced\":true,\"name\":\"Mandrill | Send Email\"}}],\"connection_roles\":[{\"name\":\"Mandrill Rol\",\"webhooks\":[{\"$referenced\":true,\"name\":\"Mandrill | Send Email\"}],\"connections\":[{\"$referenced\":true,\"name\":\"Mandrill Connection\"}]}],\"translators\":[{\"name\":\"Make Send Request\",\"type\":\"Export\",\"style\":\"ruby\",\"mime_type\":\"application/json\",\"file_extension\":\"json\",\"transformation\":\"source.to_hash(:include_root =\\u003e true).merge( \\\"request_id\\\" =\\u003e source.id.to_s, parameters: parameters).to_json\"}],\"events\":[{\"name\":\"Comunication | Email on created_at\",\"_type\":\"Setup::Observer\",\"triggers\":\"{\\\"created_at\\\":{\\\"0\\\":{\\\"o\\\":\\\"_not_null\\\",\\\"v\\\":[\\\"\\\",\\\"\\\",\\\"\\\"]}}}\",\"data_type\":{\"$referenced\":true,\"name\":\"Email\",\"schema\":{\"$referenced\":true,\"uri\":\"email.json\",\"library\":{\"$referenced\":true,\"name\":\"Comunication\"}}}}],\"libraries\":[{\"name\":\"Comunication\",\"schemas\":[{\"uri\":\"ticket.json\",\"schema\":\"{\\r\\n  \\\"title\\\": \\\"Ticket\\\",\\r\\n  \\\"type\\\": \\\"object\\\",\\r\\n  \\\"properties\\\": {\\r\\n    \\\"subject\\\": {\\r\\n      \\\"type\\\": \\\"string\\\"\\r\\n    },\\r\\n    \\\"description\\\": {\\r\\n      \\\"type\\\": \\\"string\\\"\\r\\n    }\\r\\n  }\\r\\n}\",\"library\":{\"$referenced\":true,\"name\":\"Comunication\"}},{\"uri\":\"member.json\",\"schema\":\"{\\r\\n  \\\"title\\\": \\\"Member\\\",\\r\\n  \\\"type\\\": \\\"object\\\",\\r\\n  \\\"properties\\\": {\\r\\n    \\\"email\\\": {\\r\\n      \\\"type\\\": \\\"string\\\"\\r\\n    },\\r\\n    \\\"first_name\\\": {\\r\\n      \\\"type\\\": \\\"string\\\"\\r\\n    },\\r\\n    \\\"last_name\\\": {\\r\\n      \\\"type\\\": \\\"string\\\"\\r\\n    }\\r\\n  }\\r\\n}\",\"library\":{\"$referenced\":true,\"name\":\"Comunication\"}},{\"uri\":\"sms.json\",\"schema\":\"{\\\"title\\\": \\\"SMS\\\", \\\"type\\\": \\\"object\\\", \\\"properties\\\": { \\\"from\\\": {\\\"type\\\": \\\"string\\\"}, \\\"message\\\": { \\\"type\\\": \\\"string\\\" }, \\\"phone\\\": { \\\"type\\\": \\\"string\\\" }}}\",\"library\":{\"$referenced\":true,\"name\":\"Comunication\"}},{\"uri\":\"email.json\",\"schema\":\"{ \\\"title\\\": \\\"Email\\\",\\r\\n\\\"type\\\": \\\"object\\\",\\\"properties\\\":\\r\\n {\\\"to\\\": {\\\"type\\\": \\\"string\\\"},\\r\\n\\\"from\\\": {\\\"type\\\": \\\"string\\\"},\\r\\n\\\"from_name\\\": {\\\"type\\\": \\\"string\\\"},\\r\\n\\\"subject\\\": {\\\"type\\\": \\\"string\\\"},\\r\\n\\\"body_text\\\": {\\\"type\\\": \\\"string\\\"},\\r\\n\\\"body_html\\\": {\\\"type\\\": \\\"string\\\"},\\r\\n\\\"template\\\": {\\\"type\\\": \\\"string\\\"}}}\",\"library\":{\"$referenced\":true,\"name\":\"Comunication\"}},{\"uri\":\"messaje.json\",\"schema\":\"{\\r\\n  \\\"title\\\": \\\"Message\\\",\\r\\n  \\\"type\\\": \\\"object\\\",\\r\\n   \\\"properties\\\": {\\\"text\\\": {\\r\\n      \\\"type\\\": \\\"string\\\"\\r\\n  }\\r\\n}\\r\\n}\",\"library\":{\"$referenced\":true,\"name\":\"Comunication\"}}]}],\"webhooks\":[{\"name\":\"Mandrill | Send Email\",\"path\":\"send_email\",\"purpose\":\"send\",\"method\":\"post\",\"connection_roles\":[{\"$referenced\":true,\"name\":\"Mandrill Rol\"}]}],\"connections\":[{\"number\":\"C107885800\",\"name\":\"Mandrill Connection\",\"url\":\"http://mandrill.cenithub.com\",\"token\":\"uaLMGUwAEGgXNm9L-zRY\",\"connection_roles\":[{\"$referenced\":true,\"name\":\"Mandrill Rol\"}],\"template_parameters\":[{\"key\":\"mandrill_api_key\"}]}]}",
+  "data": {
+    "name": "Mandrill CENIT Integration",
+    "flows": [
+      {
+        "name": "Send Email with Mandrill",
+        "active": true,
+        "discard_events": false,
+        "data_type_scope": "Event source",
+        "last_trigger_timestamps": "2015-04-24 19:00:18 UTC",
+        "event": {
+          "_reference": true,
+          "name": "Comunication | Email on created_at"
+        },
+        "translator": {
+          "_reference": true,
+          "name": "Request with CENIT Integration"
+        },
+        "custom_data_type": {
+          "_reference": true,
+          "name": "Email",
+          "schema": {
+            "_reference": true,
+            "uri": "email.json",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          }
+        },
+        "webhook": {
+          "_reference": true,
+          "name": "Mandrill | Send Email"
+        }
+      },
+      {
+        "name": "Convert Order -> Confirmation Email",
+        "active": true,
+        "discard_events": false,
+        "data_type_scope": "Event source",
+        "last_trigger_timestamps": "2015-04-24 15:49:53 UTC",
+        "event": {
+          "_reference": true,
+          "name": "Ecommerce | Order on created_at"
+        },
+        "translator": {
+          "_reference": true,
+          "name": "Order to Confirmation Email"
+        }
+      }
+    ],
+    "connection_roles": [
+      {
+        "name": "Mandrill Rol",
+        "webhooks": [
+          {
+            "_reference": true,
+            "name": "Mandrill | Send Email"
+          }
+        ],
+        "connections": [
+          {
+            "_reference": true,
+            "name": "Mandrill Connection"
+          }
+        ]
+      }
+    ],
+    "translators": [
+      {
+        "name": "Request with CENIT Integration",
+        "type": "Export",
+        "style": "ruby",
+        "mime_type": "application/json",
+        "file_extension": "json",
+        "bulk_source": false,
+        "transformation": "source.to_hash(:include_root => true).merge( \"request_id\" => source.id.to_s, parameters: parameters).to_json"
+      },
+      {
+        "name": "Order to Confirmation Email",
+        "type": "Conversion",
+        "discard_events": false,
+        "style": "double_curly_braces",
+        "bulk_source": false,
+        "transformation": "{\r\n\"to\": \"{{email}}\",\r\n\"from\": \"cenithub@example.com\",\r\n\"subject\": \"New order {{id}} received\",\r\n\"template\": \"order_confirmation\"\r\n}",
+        "source_data_type": {
+          "_reference": true,
+          "name": "Order",
+          "schema": {
+            "_reference": true,
+            "uri": "order.json",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          }
+        },
+        "target_data_type": {
+          "_reference": true,
+          "name": "Email",
+          "schema": {
+            "_reference": true,
+            "uri": "email.json",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          }
+        }
+      }
+    ],
+    "events": [
+      {
+        "name": "Ecommerce | Order on created_at",
+        "_type": "Setup::Observer",
+        "triggers": "{\"created_at\":{\"0\":{\"o\":\"_not_null\",\"v\":[\"\",\"\",\"\"]}}}",
+        "data_type": {
+          "_reference": true,
+          "name": "Order",
+          "schema": {
+            "_reference": true,
+            "uri": "order.json",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          }
+        }
+      },
+      {
+        "name": "Comunication | Email on created_at",
+        "_type": "Setup::Observer",
+        "triggers": "{\"created_at\":{\"0\":{\"o\":\"_not_null\",\"v\":[\"\",\"\",\"\"]}}}",
+        "data_type": {
+          "_reference": true,
+          "name": "Email",
+          "schema": {
+            "_reference": true,
+            "uri": "email.json",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          }
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": "Ecommerce",
+        "schemas": [
+          {
+            "uri": "adjustment.json",
+            "schema": "{\r\n    \"title\": \"Adjustment\",\r\n    \r\n    \"type\": \"object\",\r\n    \r\n    \"properties\": {\r\n        \"name\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"value\": {\r\n            \"type\": \"string\"\r\n        }\r\n    },\r\n    \"required\": [\"name\", \"value\"]\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "shipment.json",
+            "schema": "{\r\n    \"title\": \"Shipment\",\r\n\r\n    \"type\": \"object\",\r\n\r\n    \"properties\": {\r\n        \"id\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"order_id\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"email\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"cost\": {\r\n            \"type\": \"number\"\r\n        },\r\n        \"status\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"stock_location\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"shipping_method\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"tracking\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"shipped_at\": {\r\n            \"$ref\": \"Date\"\r\n        },\r\n        \"updated_at\": {\r\n            \"$ref\": \"Date\"\r\n        },\r\n        \"channel\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"items\": {\r\n            \"type\": \"array\",\r\n            \"items\": {\r\n                \"$ref\": \"line_item.json\"\r\n            }\r\n        },\r\n        \"shipping_address\": {\r\n            \"$ref\": \"address.json\"\r\n        }\r\n    }\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "variant.json",
+            "schema": "{\r\n    \"title\": \"Variant\",\r\n\r\n    \"type\": \"object\",\r\n\r\n    \"properties\": {\r\n        \"sku\": {\r\n            \"type\": \"string\",\r\n            \"unique\": true\r\n        },\r\n        \"price\": {\r\n            \"type\": \"number\"\r\n        },\r\n        \"cost_price\": {\r\n            \"type\": \"number\"\r\n        },\r\n        \"quantity\": {\r\n            \"type\": \"integer\"\r\n        },\r\n        \"options\": {\r\n            \"type\": \"object\"\r\n        },\r\n        \"images\": {\r\n            \"type\": \"array\",\r\n            \"items\": {\r\n                \"$ref\": \"Image\"\r\n            }\r\n        }\r\n    },\r\n    \"required\": [\"sku\"]\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "source.json",
+            "schema": "{\r\n    \"title\": \"Source\",\r\n    \r\n    \"type\": \"object\",\r\n    \r\n    \"properties\": {\r\n        \"name\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"month\": {\r\n            \"type\": \"integer\"\r\n        },\r\n        \"year\": {\r\n            \"type\": \"integer\"\r\n        },\r\n        \"cc_type\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"last_digits\": {\r\n            \"type\": \"integer\"\r\n        }\r\n    },\r\n    \"required\": [\"name\", \"cc_type\"]\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "order_total.json",
+            "schema": "{\r\n    \"title\": \"OrderTotal\",\r\n\r\n    \"type\": \"object\",\r\n\r\n    \"properties\": {\r\n        \"adjustment\": {\r\n            \"type\": \"number\",\r\n            \"minimum\": 0\r\n        },\r\n        \"tax\": {\r\n            \"type\": \"number\",\r\n            \"minimum\": 0\r\n        },\r\n        \"shipping\": {\r\n            \"type\": \"number\",\r\n            \"minimum\": 0\r\n        },\r\n        \"payment\": {\r\n            \"type\": \"number\",\r\n            \"minimum\": 0\r\n        },\r\n        \"order\": {\r\n            \"type\": \"number\",\r\n            \"minimum\": 0\r\n        },\r\n        \"item\": {\r\n            \"type\": \"number\",\r\n            \"minimum\": 0\r\n        }\r\n    }\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "inventory.json",
+            "schema": "{\r\n    \"title\": \"Inventory\",\r\n\r\n    \"type\": \"object\",\r\n    \r\n    \"properties\": {\r\n        \"id\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"location\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"quantity\": {\r\n            \"type\": \"integer\"\r\n        },\r\n        \"product_id\": {\r\n            \"type\": \"string\"\r\n        }\r\n    },\r\n    \"required\": [\"location\", \"quantity\"]\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "dimension.json",
+            "schema": "{\r\n    \"title\": \"Dimension\",\r\n\r\n    \"type\": \"object\",\r\n\r\n    \"properties\": {\r\n        \"height\": {\r\n            \"type\": \"integer\"\r\n        },\r\n        \"width\": {\r\n            \"type\": \"integer\"\r\n        }\r\n    }\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "order.json",
+            "schema": "{\r\n    \"title\": \"Order\",\r\n\r\n    \"type\": \"object\",\r\n\r\n    \"properties\": {\r\n        \"id\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"status\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"channel\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"email\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"currency\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"placed_on\": {\r\n            \"$ref\": \"DateTime\"\r\n        },\r\n        \"token\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"shipping_instructions\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"totals\": {\r\n            \"$ref\": \"order_total.json\"\r\n        },\r\n        \"line_items\": {\r\n            \"type\": \"array\",\r\n            \"items\": {\r\n                \"$ref\": \"line_item.json\"\r\n            }\r\n        },\r\n        \"adjustments\": {\r\n            \"type\": \"array\",\r\n            \"items\": {\r\n                \"$ref\": \"adjustment.json\"\r\n            }\r\n        },\r\n        \"payments\": {\r\n            \"type\": \"array\",\r\n            \"items\": {\r\n                \"$ref\": \"payment.json\"\r\n            }\r\n        },\r\n        \"shipping_address\": {\r\n            \"$ref\": \"address.json\"\r\n        },\r\n        \"billing_address\": {\r\n            \"$ref\": \"address.json\"\r\n        }\r\n    },\r\n    \"required\": [\"id\", \"status\", \"channel\", \"currency\", \"placed_on\"]\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "payment.json",
+            "schema": "{\r\n    \"title\": \"Payment\",\r\n\r\n    \"type\": \"object\",\r\n\r\n    \"properties\": {\r\n        \"number\": {\r\n            \"type\": \"integer\"\r\n        },\r\n        \"status\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"amount\": {\r\n            \"type\": \"number\"\r\n        },\r\n        \"payment_method\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"source\": {\r\n            \"$ref\": \"Source\"\r\n        }\r\n    },\r\n    \"required\": [\"number\", \"status\", \"amount\", \"payment_method\"]\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "cart.json",
+            "schema": "{\r\n    \"title\": \"Cart\",\r\n\r\n    \"type\": \"object\",\r\n\r\n    \"properties\": {\r\n        \"id\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"status\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"channel\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"email\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"currency\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"placed_on\": {\r\n            \"$ref\": \"Date\"\r\n        },\r\n        \"totals\": {\r\n            \"$ref\": \"order_total.json\"\r\n        },\r\n        \"shipping_address\": {\r\n            \"$ref\": \"address.json\"\r\n        },\r\n        \"billing_address\": {\r\n            \"$ref\": \"address.json\"\r\n\r\n        },\r\n        \"line_items\": {\r\n            \"type\": \"array\",\r\n            \"items\": {\r\n                \"$ref\": \"line_item.json\"\r\n            }\r\n        },\r\n        \"adjustments\": {\r\n            \"type\": \"array\",\r\n            \"items\": {\r\n                \"$ref\": \"adjustment.json\"\r\n            }\r\n        },\r\n        \"payments\": {\r\n            \"type\": \"array\",\r\n            \"items\": {\r\n                \"$ref\": \"payment.json\"\r\n            }\r\n        }\r\n    },\r\n    \"required\": [\"id\", \"status\", \"channel\", \"email\", \"currency\", \"placed_on\", \"shipping_address\", \"billing_address\"]\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "address.json",
+            "schema": "{\r\n    \"title\": \"Address\",\r\n    \r\n    \"type\": \"object\",\r\n    \r\n    \"properties\": {\r\n        \"firstname\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"lastname\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"address1\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"address2\": {\r\n            \"type\": \"string\",\r\n            \"default\": \"\"\r\n        },\r\n        \"city\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"state\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"country\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"phone\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"zipcode\": {\r\n            \"type\": \"string\"\r\n        }\r\n    },\r\n    \"required\": [\"firstname\", \"lastname\", \"address1\", \"zipcode\", \"city\", \"state\", \"country\"]\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "line_item.json",
+            "schema": "{\r\n    \"title\": \"LineItem\",\r\n    \r\n    \"type\": \"object\",\r\n    \r\n    \"properties\": {\r\n        \"name\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"quantity\": {\r\n            \"type\": \"integer\"\r\n        },\r\n        \"price\": {\r\n            \"type\": \"number\"\r\n        },\r\n        \"product_id\": {\r\n            \"type\": \"string\"\r\n        }\r\n    },\r\n    \"required\": [\"name\", \"quantity\", \"price\"]\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "customer.json",
+            "schema": "{\r\n    \"title\": \"Customer\",\r\n\r\n    \"type\": \"object\",\r\n\r\n    \"properties\": {\r\n        \"id\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"firstname\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"lastname\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"email\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"shipping_address\": {\r\n            \"$ref\": \"address.json\"\r\n        },\r\n        \"billing_address\": {\r\n            \"$ref\": \"address.json\"\r\n        }\r\n    },\r\n    \"required\": [\"id\", \"firstname\", \"lastname\"]\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "image.json",
+            "schema": "{\r\n    \"title\": \"Image\",\r\n\r\n    \"type\": \"object\",\r\n\r\n    \"properties\": {\r\n        \"url\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"position\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"title\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"type\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"dimension\": {\r\n            \"$ref\": \"Dimension\"\r\n        }\r\n\r\n    },\r\n    \"required\": [\"url\"]\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          },
+          {
+            "uri": "product.json",
+            "schema": "{\r\n    \"title\": \"Product\",\r\n\r\n    \"type\": \"object\",\r\n\r\n    \"properties\": {\r\n        \"id\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"name\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"sku\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"description\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"price\": {\r\n            \"type\": \"number\",\r\n            \"minimum\": 0,\r\n            \"exclusiveMinimum\": true\r\n        },\r\n        \"cost_price\": {\r\n            \"type\": \"number\"\r\n        },\r\n        \"available_on\": {\r\n            \"$ref\": \"Date\"\r\n        },\r\n        \"permalink\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"meta_description\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"meta_keywords\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"shipping_category\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"options\": {\r\n            \"type\": \"array\"\r\n        },\r\n        \"taxons\": {\r\n            \"type\": \"array\"\r\n        },\r\n        \"properties\": {\r\n            \"type\": \"object\"\r\n        },\r\n        \"variants\": {\r\n            \"type\": \"array\",\r\n            \"items\": {\r\n                \"$ref\": \"variant.json\"\r\n            }\r\n        },\r\n        \"images\": {\r\n            \"type\": \"array\",\r\n            \"items\": {\r\n                \"$ref\": \"image.json\"\r\n            }\r\n        }\r\n    },\r\n    \"required\": [\"id\", \"name\", \"price\", \"available_on\", \"shipping_category\"]\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Ecommerce"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Comunication",
+        "schemas": [
+          {
+            "uri": "ticket.json",
+            "schema": "{\r\n  \"title\": \"Ticket\",\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"subject\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"description\": {\r\n      \"type\": \"string\"\r\n    }\r\n  }\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "member.json",
+            "schema": "{\r\n  \"title\": \"Member\",\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"email\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"first_name\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"last_name\": {\r\n      \"type\": \"string\"\r\n    }\r\n  }\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "sms.json",
+            "schema": "{\"title\": \"SMS\", \"type\": \"object\", \"properties\": { \"id\": {\"type\": \"string\"}, \"from\": {\"type\": \"string\"}, \"message\": { \"type\": \"string\" }, \"phone\": { \"type\": \"string\" }}}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "email.json",
+            "schema": "{ \"title\": \"Email\",\r\n\"type\": \"object\",\"properties\":\r\n {\"to\": {\"type\": \"string\"},\r\n\"from\": {\"type\": \"string\"},\r\n\"from_name\": {\"type\": \"string\"},\r\n\"subject\": {\"type\": \"string\"},\r\n\"body_text\": {\"type\": \"string\"},\r\n\"body_html\": {\"type\": \"string\"},\r\n\"template\": {\"type\": \"string\"}}}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "tweet.json",
+            "schema": "{\r\n  \"title\": \"Tweet\",\r\n  \"type\": \"object\",\r\n   \"properties\": {\"body\": {\r\n      \"type\": \"string\"\r\n  }\r\n}\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "tweet_token.json",
+            "schema": "{\r\n  \"title\":\"Tweet Token\",\r\n  \"type\":\"object\",\r\n  \"properties\":{\r\n    \"tweet\":{\"$ref\":\"tweet.json\", \"referenced\": true},\r\n    \"token\":{\"type\":\"string\"}\r\n  }\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "messaje.json",
+            "schema": "{\r\n  \"title\": \"Message\",\r\n  \"type\": \"object\",\r\n   \"properties\": {\"text\": {\r\n      \"type\": \"string\"\r\n  }\r\n}\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          }
+        ]
+      }
+    ],
+    "webhooks": [
+      {
+        "name": "Mandrill | Send Email",
+        "path": "send_email",
+        "purpose": "send",
+        "method": "post"
+      }
+    ],
+    "connections": [
+      {
+        "number": "C107885800",
+        "name": "Mandrill Connection",
+        "url": "http://mandrill.cenithub.com",
+        "token": "uaLMGUwAEGgXNm9L-zRY",
+        "template_parameters": [
+          {
+            "key": "mandrill_api_key"
+          }
+        ]
+      }
+    ]
+  },
   "pull_parameters": [
     {
-      "label": "API Key",
+      "label": "Mandrill API Key",
       "parameter": "On connection 'Mandrill Connection' template parameter 'mandrill_api_key'"
     }
   ]

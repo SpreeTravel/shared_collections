@@ -5,7 +5,7 @@
       "uri": "ticket.json",
       "schema": "{\r\n  \"title\": \"Ticket\",\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"subject\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"description\": {\r\n      \"type\": \"string\"\r\n    }\r\n  }\r\n}",
       "library": {
-        "$referenced": true,
+        "_reference": true,
         "name": "Comunication"
       }
     },
@@ -13,23 +13,31 @@
       "uri": "member.json",
       "schema": "{\r\n  \"title\": \"Member\",\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"email\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"first_name\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"last_name\": {\r\n      \"type\": \"string\"\r\n    }\r\n  }\r\n}",
       "library": {
-        "$referenced": true,
+        "_reference": true,
         "name": "Comunication"
       }
     },
     {
       "uri": "sms.json",
-      "schema": "{\"title\": \"SMS\", \"type\": \"object\", \"properties\": { \"from\": {\"type\": \"string\"}, \"message\": { \"type\": \"string\" }, \"phone\": { \"type\": \"string\" }}}",
+      "schema": "{\"title\": \"SMS\", \"type\": \"object\", \"properties\": { \"id\": {\"type\": \"string\"}, \"from\": {\"type\": \"string\"}, \"message\": { \"type\": \"string\" }, \"phone\": { \"type\": \"string\" }}}",
       "library": {
-        "$referenced": true,
+        "_reference": true,
         "name": "Comunication"
       }
     },
     {
-      "uri": "email.json",
-      "schema": "{ \"title\": \"Email\",\r\n\"type\": \"object\",\"properties\":\r\n {\"to\": {\"type\": \"string\"},\r\n\"from\": {\"type\": \"string\"},\r\n\"from_name\": {\"type\": \"string\"},\r\n\"subject\": {\"type\": \"string\"},\r\n\"body_text\": {\"type\": \"string\"},\r\n\"body_html\": {\"type\": \"string\"},\r\n\"template\": {\"type\": \"string\"}}}",
+      "uri": "tweet.json",
+      "schema": "{\r\n  \"title\": \"Tweet\",\r\n  \"type\": \"object\",\r\n   \"properties\": {\"body\": {\r\n      \"type\": \"string\"\r\n  }\r\n}\r\n}",
       "library": {
-        "$referenced": true,
+        "_reference": true,
+        "name": "Comunication"
+      }
+    },
+    {
+      "uri": "tweet_token.json",
+      "schema": "{\r\n  \"title\":\"Tweet Token\",\r\n  \"type\":\"object\",\r\n  \"properties\":{\r\n    \"tweet\":{\"$ref\":\"tweet.json\", \"referenced\": true},\r\n    \"token\":{\"type\":\"string\"}\r\n  }\r\n}",
+      "library": {
+        "_reference": true,
         "name": "Comunication"
       }
     },
@@ -37,7 +45,15 @@
       "uri": "messaje.json",
       "schema": "{\r\n  \"title\": \"Message\",\r\n  \"type\": \"object\",\r\n   \"properties\": {\"text\": {\r\n      \"type\": \"string\"\r\n  }\r\n}\r\n}",
       "library": {
-        "$referenced": true,
+        "_reference": true,
+        "name": "Comunication"
+      }
+    },
+    {
+      "uri": "email.json",
+      "schema": "{ \"title\": \"Email\",\r\n\"type\": \"object\",\"properties\":\r\n {\"to\": {\"type\": \"string\"},\r\n\"from\": {\"type\": \"string\"},\r\n\"from_name\": {\"type\": \"string\"},\r\n\"subject\": {\"type\": \"string\"},\r\n\"body_text\": {\"type\": \"string\"},\r\n\"body_html\": {\"type\": \"string\"},\r\n\"template\": {\"type\": \"string\"}}}",
+      "library": {
+        "_reference": true,
         "name": "Comunication"
       }
     }
