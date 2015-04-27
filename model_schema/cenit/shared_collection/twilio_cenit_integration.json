@@ -153,7 +153,7 @@
         "schemas": [
           {
             "uri": "adjustment.json",
-            "schema": "{\r\n    \"title\": \"Adjustment\",\r\n    \r\n    \"type\": \"object\",\r\n    \r\n    \"properties\": {\r\n        \"name\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"value\": {\r\n            \"type\": \"string\"\r\n        }\r\n    },\r\n    \"required\": [\"name\", \"value\"]\r\n}",
+            "schema": "{\r\n  \"title\": \"Adjustment\",\r\n  \"type\": \"object\", \r\n  \"properties\": {\r\n \"name\": {\r\n \"type\": \"string\"\r\n },\r\n  \"value\": {\r\n \"type\": \"string\"\r\n }\r\n  },\r\n \"required\": [\"name\", \"value\"]\r\n}",
             "library": {
               "_reference": true,
               "name": "Ecommerce"
@@ -161,7 +161,7 @@
           },
           {
             "uri": "shipment.json",
-            "schema": "{\r\n    \"title\": \"Shipment\",\r\n\r\n    \"type\": \"object\",\r\n\r\n    \"properties\": {\r\n        \"id\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"order_id\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"email\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"cost\": {\r\n            \"type\": \"number\"\r\n        },\r\n        \"status\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"stock_location\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"shipping_method\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"tracking\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"shipped_at\": {\r\n            \"$ref\": \"Date\"\r\n        },\r\n        \"updated_at\": {\r\n            \"$ref\": \"Date\"\r\n        },\r\n        \"channel\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"items\": {\r\n            \"type\": \"array\",\r\n            \"items\": {\r\n                \"$ref\": \"line_item.json\"\r\n            }\r\n        },\r\n        \"shipping_address\": {\r\n            \"$ref\": \"address.json\"\r\n        }\r\n    }\r\n}",
+            "schema": "{\r\n    \"title\": \"Shipment\",\r\n\r\n  \"type\": \"object\",\r\n\r\n \"properties\": {\r\n        \"id\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"order_id\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"email\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"cost\": {\r\n            \"type\": \"number\"\r\n        },\r\n        \"status\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"stock_location\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"shipping_method\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"tracking\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"shipped_at\": {\r\n            \"$ref\": \"Date\"\r\n        },\r\n        \"updated_at\": {\r\n            \"$ref\": \"Date\"\r\n        },\r\n        \"channel\": {\r\n            \"type\": \"string\"\r\n        },\r\n        \"items\": {\r\n            \"type\": \"array\",\r\n            \"items\": {\r\n                \"$ref\": \"line_item.json\"\r\n            }\r\n        },\r\n        \"shipping_address\": {\r\n            \"$ref\": \"address.json\"\r\n        }\r\n    }\r\n}",
             "library": {
               "_reference": true,
               "name": "Ecommerce"
