@@ -1,0 +1,14 @@
+{
+    "sms": [
+        {
+            "from": "+000000000",
+            "message": "Order ID R154085346 status complete!",
+            "phone": "+000000000"
+        },
+        {
+            "from": "+00000000",
+            "message": "Order ID R154085347 status canceled!",
+            "phone": "+000000000"
+        }
+    ]
+}

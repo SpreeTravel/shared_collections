@@ -1,0 +1,203 @@
+{
+  "name": "Tender CENIT Integration",
+  "description": "Tender CENIT Integration",
+  "data": {
+    "name": "Tender CENIT Integration",
+    "flows": [
+      {
+        "name": "Send Ticket with Tender",
+        "active": true,
+        "discard_events": false,
+        "data_type_scope": "Event source",
+        "last_trigger_timestamps": "2015-04-23 19:01:33 UTC",
+        "event": {
+          "_reference": true,
+          "name": "Comunication | Ticket on created_at"
+        },
+        "translator": {
+          "_reference": true,
+          "name": "Request with CENIT Integration"
+        },
+        "custom_data_type": {
+          "_reference": true,
+          "name": "Ticket",
+          "schema": {
+            "_reference": true,
+            "uri": "ticket.json",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          }
+        },
+        "webhook": {
+          "_reference": true,
+          "name": "Tender | Create Ticket"
+        }
+      }
+    ],
+    "connection_roles": [
+      {
+        "name": "Tender Rol",
+        "webhooks": [
+          {
+            "_reference": true,
+            "name": "Tender | Create Ticket"
+          }
+        ],
+        "connections": [
+          {
+            "_reference": true,
+            "name": "Tender Connection"
+          }
+        ]
+      }
+    ],
+    "translators": [
+      {
+        "name": "Request with CENIT Integration",
+        "type": "Export",
+        "style": "ruby",
+        "mime_type": "application/json",
+        "file_extension": "json",
+        "bulk_source": false,
+        "transformation": "source.to_hash(:include_root => true).merge( \"request_id\" => source.id.to_s, parameters: parameters).to_json"
+      }
+    ],
+    "events": [
+      {
+        "name": "Comunication | Ticket on created_at",
+        "_type": "Setup::Observer",
+        "triggers": "{\"created_at\":{\"0\":{\"o\":\"_not_null\",\"v\":[\"\",\"\",\"\"]}}}",
+        "data_type": {
+          "_reference": true,
+          "name": "Ticket",
+          "schema": {
+            "_reference": true,
+            "uri": "ticket.json",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          }
+        }
+      }
+    ],
+    "libraries": [
+      {
+        "name": "Comunication",
+        "schemas": [
+          {
+            "uri": "ticket.json",
+            "schema": "{\r\n  \"title\": \"Ticket\",\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"subject\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"description\": {\r\n      \"type\": \"string\"\r\n    }\r\n  }\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "member.json",
+            "schema": "{\r\n  \"title\": \"Member\",\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"email\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"first_name\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"last_name\": {\r\n      \"type\": \"string\"\r\n    }\r\n  }\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "sms.json",
+            "schema": "{\"title\": \"SMS\", \"type\": \"object\", \"properties\": { \"id\": {\"type\": \"string\"}, \"from\": {\"type\": \"string\"}, \"message\": { \"type\": \"string\" }, \"phone\": { \"type\": \"string\" }}}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "email.json",
+            "schema": "{ \"title\": \"Email\",\r\n\"type\": \"object\",\"properties\":\r\n {\"to\": {\"type\": \"string\"},\r\n\"from\": {\"type\": \"string\"},\r\n\"from_name\": {\"type\": \"string\"},\r\n\"subject\": {\"type\": \"string\"},\r\n\"body_text\": {\"type\": \"string\"},\r\n\"body_html\": {\"type\": \"string\"},\r\n\"template\": {\"type\": \"string\"}}}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "tweet.json",
+            "schema": "{\r\n  \"title\": \"Tweet\",\r\n  \"type\": \"object\",\r\n   \"properties\": {\"body\": {\r\n      \"type\": \"string\"\r\n  }\r\n}\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "tweet_token.json",
+            "schema": "{\r\n  \"title\":\"Tweet Token\",\r\n  \"type\":\"object\",\r\n  \"properties\":{\r\n    \"tweet\":{\"$ref\":\"tweet.json\", \"referenced\": true},\r\n    \"token\":{\"type\":\"string\"}\r\n  }\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          },
+          {
+            "uri": "messaje.json",
+            "schema": "{\r\n  \"title\": \"Message\",\r\n  \"type\": \"object\",\r\n   \"properties\": {\"text\": {\r\n      \"type\": \"string\"\r\n  }\r\n}\r\n}",
+            "library": {
+              "_reference": true,
+              "name": "Comunication"
+            }
+          }
+        ]
+      }
+    ],
+    "webhooks": [
+      {
+        "name": "Tender | Create Ticket",
+        "path": "create_ticket",
+        "purpose": "send",
+        "method": "post"
+      }
+    ],
+    "connections": [
+      {
+        "number": "C067741544",
+        "name": "Tender Connection",
+        "url": "http://tender.cenithub.com",
+        "token": "Fqj89f94wqwXs-Wnix6A",
+        "template_parameters": [
+          {
+            "key": "tender_api_key"
+          },
+          {
+            "key": "tender_author_name",
+            "value": "Cenithub"
+          },
+          {
+            "key": "tender_author_email",
+            "value": "cenit@gmail.com"
+          },
+          {
+            "key": "tender_domain"
+          },
+          {
+            "key": "tender_public",
+            "value": "false"
+          },
+          {
+            "key": "tender_category_id"
+          }
+        ]
+      }
+    ]
+  },
+  "pull_parameters": [
+    {
+      "label": "Tender Domain",
+      "parameter": "On connection 'Tender Connection' template parameter 'tender_domain'"
+    },
+    {
+      "label": "Tender API Key",
+      "parameter": "On connection 'Tender Connection' template parameter 'tender_api_key'"
+    },
+    {
+      "label": "Tender Category ID",
+      "parameter": "On connection 'Tender Connection' template parameter 'tender_category_id'"
+    }
+  ]
+}

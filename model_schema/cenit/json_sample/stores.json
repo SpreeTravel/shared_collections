@@ -1,0 +1,22 @@
+{
+    "stores": [
+        {
+            "id": "51f788cf65762d3177000001",
+            "name": "Test Store 1",
+            "permalink": "test_store_1",
+            "time_zone": "UTC"
+        },
+        {
+            "id": "51f788cf65762d3177000002",
+            "name": "Test Store 2",
+            "permalink": "test_store_2",
+            "time_zone": "UTC"
+        },
+        {
+            "id": "51f788cf65762d3177000003",
+            "name": "Test Store 3",
+            "permalink": "test_store_3",
+            "time_zone": "UTC"
+        }
+    ]
+}
